@@ -1,2 +1,2 @@
 # xmas-world
-Xmasworld – Christmas &amp; New Year site with music and a virtual high street
+Xmas-world.com – Christmas &amp; New Year site with music and a virtual high street

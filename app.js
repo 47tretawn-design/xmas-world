@@ -108,7 +108,7 @@ if(document.getElementById('clips'))(function(){var g=document.getElementById('c
 d.innerHTML='<video controls playsinline preload="none" poster="'+V+c[0]+'.jpg" src="'+V+c[0]+'.mp4"></video><h3>'+c[1]+'</h3>';g.appendChild(d);});
 })();
 document.addEventListener('play',function(e){document.querySelectorAll('video,audio').forEach(function(m){if(m!==e.target)m.pause();});},true);
-document.getElementById('share').onclick=function(){var d={title:'Xmasworld',text:'🎄 Christmas & New Year around the world',url:'https://www.xmas-world.com/'};
+document.getElementById('share').onclick=function(){var d={title:'Xmas-world.com',text:'🎄 Christmas & New Year around the world',url:'https://www.xmas-world.com/'};
 if(navigator.share){navigator.share(d).catch(function(){})}else{window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url),'_blank')}};
 for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=(0.15+Math.random()*0.45).toFixed(2);document.body.appendChild(s);}
 (function(){var p=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('nav a').forEach(function(a){if(a.getAttribute('href')===p)a.classList.add('on')});
