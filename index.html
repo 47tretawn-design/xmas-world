@@ -67,8 +67,8 @@ footer small{display:block;margin-top:14px;opacity:.7}
 .clip.wide video{aspect-ratio:16/9}
 .clip h3{padding:10px 14px;margin:0;font-size:1rem}
 #clips{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;align-items:start}
-#streets{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;scrollbar-width:none}
-#streets::-webkit-scrollbar{display:none}
+#streets,#lstreets{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;scrollbar-width:none}
+#streets::-webkit-scrollbar,#lstreets::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;border:2px solid #ffd166;background:transparent;color:#ffd166;border-radius:999px;padding:8px 16px;font:bold .95rem Georgia,serif;cursor:pointer}
 .chip.on{background:#ffd166;color:#0b1d2e}
 .sthead{text-align:center;margin-bottom:14px}
@@ -102,6 +102,8 @@ footer small{display:block;margin-top:14px;opacity:.7}
 </header>
 <nav>
 <a href="#highstreet">Virtual High Street</a>
+<a href="#luxury">Luxury</a>
+<a href="#windows">Windows</a>
 <a href="#music">Music</a>
 <a href="#comedy">Comedy</a>
 <a href="#world">Around the World</a>
@@ -113,6 +115,19 @@ footer small{display:block;margin-top:14px;opacity:.7}
 <p style="text-align:center;margin-bottom:20px">Pick a street, then tap a shop to visit it. 📍 shows it on the map.</p>
 <div id="streets"></div>
 <div id="street"></div>
+</section>
+
+<section id="luxury">
+<h2>💎 The Luxury High Street</h2>
+<p style="text-align:center;margin-bottom:20px">The world's most exclusive shopping streets, in one place. For Christmas and beyond.</p>
+<div id="lstreets"></div>
+<div id="lstreet"></div>
+</section>
+
+<section id="windows">
+<h2>🪟 Famous Christmas Windows</h2>
+<p style="text-align:center;margin-bottom:20px">The world's best-loved department store windows. Watch this year's and past years' displays.</p>
+<div class="grid" id="wins"></div>
 </section>
 
 <section id="music">
@@ -221,12 +236,28 @@ var STREETS=[
 ["Champs-Élysées","Paris",[["Louis Vuitton","https://www.louisvuitton.com"],["Ladurée","https://www.laduree.com"],["Guerlain","https://www.guerlain.com"],["Sephora","https://www.sephora.fr"],["Apple","https://www.apple.com/fr/"],["Nike","https://www.nike.com"]]],
 ["Ginza","Tokyo",[["Ginza Six","https://ginza6.tokyo"],["Mitsukoshi","https://mitsukoshi.mistore.jp"],["Matsuya","https://www.matsuya.com"],["Wako","https://www.wako.co.jp"],["Uniqlo","https://www.uniqlo.com"],["Itoya","https://www.ito-ya.co.jp"],["Apple","https://www.apple.com/jp/"],["Dover Street Market","https://ginza.doverstreetmarket.com"]]]
 ];
-(function(){var bar=document.getElementById('streets'),box=document.getElementById('street');
-function show(i){var st=STREETS[i];bar.querySelectorAll('.chip').forEach(function(c,j){c.classList.toggle('on',i===j)});
+function streetPicker(barId,boxId,DATA){var bar=document.getElementById(barId),box=document.getElementById(boxId);
+function show(i){var st=DATA[i];bar.querySelectorAll('.chip').forEach(function(c,j){c.classList.toggle('on',i===j)});
 var h='<div class="sthead"><h3>'+st[0]+'</h3><p>'+st[1]+' · <a href="'+Q(st[0]+', '+st[1])+'" target="_blank" rel="noopener">🗺️ Walk it</a><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(st[0]+' '+st[1]+' Christmas walk')+'" target="_blank" rel="noopener">▶ Watch</a></p></div><div class="shops">';
-st[2].forEach(function(sh){h+='<div class="shop"><a href="'+sh[1]+'" target="_blank" rel="noopener">'+sh[0]+'</a><a class="pin" href="'+Q(sh[0]+', '+st[0]+', '+st[1])+'" target="_blank" rel="noopener" aria-label="Map">📍</a></div>'});
+st[2].forEach(function(sh){var area=st[0].split(' & ')[0];h+='<div class="shop"><a href="'+(sh[1]||Q(sh[0]+', '+st[1]))+'" target="_blank" rel="noopener">'+sh[0]+'</a><a class="pin" href="'+Q(sh[0]+', '+area+', '+st[1])+'" target="_blank" rel="noopener" aria-label="Map">📍</a></div>'});
 box.innerHTML=h+'</div>';}
-STREETS.forEach(function(st,i){var b=document.createElement('button');b.className='chip';b.textContent=st[0];b.onclick=function(){show(i)};bar.appendChild(b)});show(0);})();
+DATA.forEach(function(st,i){var b=document.createElement('button');b.className='chip';b.textContent=st[0];b.onclick=function(){show(i)};bar.appendChild(b)});show(0);}
+streetPicker('streets','street',STREETS);
+var LUXURY=[
+["Knightsbridge","London",[["Harrods","https://www.harrods.com"],["Harvey Nichols","https://www.harveynichols.com"],["Hermès","https://www.hermes.com"],["Chanel","https://www.chanel.com"],["Burberry","https://www.burberry.com"]]],
+["Bond Street","London",[["Louis Vuitton","https://www.louisvuitton.com"],["Cartier","https://www.cartier.com"],["Tiffany & Co.","https://www.tiffany.co.uk"],["Dior","https://www.dior.com"],["Sotheby's","https://www.sothebys.com"]]],
+["Mayfair & Savile Row","London",[["Huntsman","https://www.huntsmansavilerow.com"],["Henry Poole","https://henrypoole.com"],["Burlington Arcade","https://www.burlingtonarcade.com"],["Fortnum & Mason","https://www.fortnumandmason.com"]]],
+["Dubai Mall & Downtown","Dubai",[["The Dubai Mall","https://thedubaimall.com"],["Level Shoes","https://www.levelshoes.com"],["Mall of the Emirates","https://www.malloftheemirates.com"],["Gold Souk",""]]],
+["Avenue Montaigne","Paris",[["Dior","https://www.dior.com"],["Chanel","https://www.chanel.com"],["Louis Vuitton","https://www.louisvuitton.com"]]],
+["Via Montenapoleone","Milan",[["Prada","https://www.prada.com"],["Gucci","https://www.gucci.com"],["Louis Vuitton","https://www.louisvuitton.com"]]],
+["Madison Avenue","New York",[["Ralph Lauren","https://www.ralphlauren.com"],["Hermès","https://www.hermes.com"]]],
+["Rodeo Drive","Beverly Hills",[["Gucci","https://www.gucci.com"],["Chanel","https://www.chanel.com"],["Louis Vuitton","https://www.louisvuitton.com"],["Hermès","https://www.hermes.com"],["Tiffany & Co.","https://www.tiffany.com"]]],
+["Ginza","Tokyo",[["Ginza Six","https://ginza6.tokyo"],["Wako","https://www.wako.co.jp"],["Mitsukoshi","https://mitsukoshi.mistore.jp"]]]
+];
+streetPicker('lstreets','lstreet',LUXURY);
+var WINS=[["Selfridges","London","https://www.selfridges.com"],["Harrods","London","https://www.harrods.com"],["Fortnum & Mason","London","https://www.fortnumandmason.com"],["Liberty","London","https://www.libertylondon.com"],["Macy's Herald Square","New York","https://www.macys.com"],["Saks Fifth Avenue","New York","https://www.saksfifthavenue.com"],["Bergdorf Goodman","New York","https://www.bergdorfgoodman.com"],["Galeries Lafayette Haussmann","Paris","https://haussmann.galerieslafayette.com"],["Printemps Haussmann","Paris","https://www.printemps.com"],["KaDeWe","Berlin","https://www.kadewe.de"]];
+(function(){var g=document.getElementById('wins');WINS.forEach(function(w){var d=document.createElement('div');d.className='card';
+d.innerHTML='<h3>'+w[0]+'</h3><p>'+w[1]+'</p><div class="links"><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(w[0]+' Christmas windows')+'" target="_blank" rel="noopener">▶ Watch</a><a href="'+Q(w[0]+', '+w[1])+'" target="_blank" rel="noopener">📍 Map</a><a href="'+w[2]+'" target="_blank" rel="noopener">🌐 Visit</a></div>';g.appendChild(d);});})();
 var V='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/comedy/';
 var CLIPS=[["v03","Di Twits: the intro",1],["v04","The Receipt"],["v05","Market Day"],["v07","£10 Trainers"],["v08","Nan's Gold Watch"],["v02","The Look"],["v06","What's in the Bag?",1],["v01","Live at the Pub",1]];
 (function(){var g=document.getElementById('clips');CLIPS.forEach(function(c){var d=document.createElement('div');d.className='card clip'+(c[2]?' wide':'');
