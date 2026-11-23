@@ -102,7 +102,7 @@ var STREETS=[
 function streetPicker(barId,boxId,DATA){var bar=document.getElementById(barId),box=document.getElementById(boxId);
 function show(i){var st=DATA[i];bar.querySelectorAll('.chip').forEach(function(c,j){c.classList.toggle('on',i===j)});
 var h='<div class="sthead"><h3>'+st[0]+'</h3><p>'+st[1]+' · <a href="'+Q(st[0]+', '+st[1])+'" target="_blank" rel="noopener">🗺️ Walk it</a><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(st[0]+' '+st[1]+' Christmas walk')+'" target="_blank" rel="noopener">▶ Watch</a></p></div><div class="shops">';
-st[2].forEach(function(sh){var area=st[0].split(' & ')[0];h+='<div class="shop"><a href="'+(sh[1]||Q(sh[0]+', '+st[1]))+'" target="_blank" rel="noopener">'+sh[0]+'</a><a class="pin" href="'+Q(sh[0]+', '+area+', '+st[1])+'" target="_blank" rel="noopener" aria-label="Map">📍</a></div>'});
+st[2].forEach(function(sh){var area=st[0].split(' & ')[0];h+='<div class="shop"><a href="'+(sh[1]||Q(sh[0]+', '+st[1]))+'" target="_blank" rel="noopener">'+sh[0]+'</a></div>'});
 box.innerHTML=h+'</div>';}
 DATA.forEach(function(st,i){var b=document.createElement('button');b.className='chip';b.textContent=st[0];b.onclick=function(){show(i)};bar.appendChild(b)});show(0);}
 if(document.getElementById('streets'))streetPicker('streets','street',STREETS);
@@ -120,7 +120,7 @@ var LUXURY=[
 if(document.getElementById('lstreets'))streetPicker('lstreets','lstreet',LUXURY);
 var WINS=[["Selfridges","London","https://www.selfridges.com"],["Harrods","London","https://www.harrods.com"],["Fortnum & Mason","London","https://www.fortnumandmason.com"],["Liberty","London","https://www.libertylondon.com"],["Macy's Herald Square","New York","https://www.macys.com"],["Saks Fifth Avenue","New York","https://www.saksfifthavenue.com"],["Bergdorf Goodman","New York","https://www.bergdorfgoodman.com"],["Galeries Lafayette Haussmann","Paris","https://haussmann.galerieslafayette.com"],["Printemps Haussmann","Paris","https://www.printemps.com"],["KaDeWe","Berlin","https://www.kadewe.de"]];
 if(document.getElementById('wins'))(function(){var g=document.getElementById('wins');WINS.forEach(function(w){var d=document.createElement('div');d.className='card';
-d.innerHTML='<h3>'+w[0]+'</h3><p>'+w[1]+'</p><div class="links"><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(w[0]+' Christmas windows')+'" target="_blank" rel="noopener">▶ Watch</a><a href="'+Q(w[0]+', '+w[1])+'" target="_blank" rel="noopener">📍 Map</a><a href="'+w[2]+'" target="_blank" rel="noopener">🌐 Visit</a></div>';g.appendChild(d);});})();
+d.innerHTML='<h3>'+w[0]+'</h3><p>'+w[1]+'</p><div class="links"><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(w[0]+' Christmas windows')+'" target="_blank" rel="noopener">▶ Watch</a><a href="'+w[2]+'" target="_blank" rel="noopener">🌐 Visit</a></div>';g.appendChild(d);});})();
 var YT=function(q){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q)};
 var FW=[["Auckland","Sky Tower",13,[["▶ Watch live",YT("Auckland Sky Tower New Year fireworks live")]]],
 ["Sydney","Harbour Bridge & Opera House",11,[["▶ Official stream","https://sydneynewyearseve.com/live-stream"],["📺 ABC iview","https://iview.abc.net.au"]]],
@@ -149,6 +149,10 @@ for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');
 var R={music:'music.html',comedy:'comedy.html',fireworks:'fireworks.html',world:'world.html',highstreet:'shop.html',luxury:'shop.html#luxury',windows:'shop.html#windows'},h=location.hash.slice(1);
 if((p==='index.html')&&R[h])location.replace(R[h]);})();
 
+if(!document.getElementById('menubtn')){var mb=document.createElement('button');mb.id='menubtn';mb.setAttribute('aria-label','Menu');mb.textContent='☰';document.body.insertBefore(mb,document.body.firstChild);var sh=document.createElement('div');sh.id='navshade';document.body.appendChild(sh);}
 if(!XW.bar.parentNode)document.body.appendChild(XW.bar);XW.ui();
 }
+// Phone menu: ☰ opens the side menu; tapping a link or outside closes it
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;if(t.closest('#menubtn')){document.body.classList.toggle('menu-open');return;}if(t.id==='navshade'||t.closest('nav a'))document.body.classList.remove('menu-open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('menu-open');});
 init();
