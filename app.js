@@ -51,7 +51,12 @@ document.querySelectorAll('.track').forEach(function(c){c.classList.toggle('on',
 var now=document.getElementById('now');if(now)now.textContent=on?(A.paused?'Paused: ':'Now playing: ')+t.title:'Pick a track';
 var sb=document.getElementById('sotd');if(sb){var p=TRACKS[+sb.dataset.i];if(p)sb.innerHTML='🎵 Song of the day: <b>'+p.title+'</b> '+(X.i===+sb.dataset.i&&!A.paused?'⏸':'▶');}};
 bar.querySelector('#xwpp').onclick=X.toggle;bar.querySelector('#xwnx').onclick=function(){X.play((X.i+1)%TRACKS.length)};
-bar.querySelector('#xwx').onclick=function(){A.pause();A.removeAttribute('src');X.i=-1;X.ui();};
+bar.querySelector('#xwx').onclick=function(){A.pause();A.removeAttribute('src');X.i=-1;X.ui();try{sessionStorage.xwoff=1}catch(e){}};
+// Start a song on the landing page. Browsers block sound until the visitor interacts,
+// so if autoplay is refused it starts on their first tap or key press instead.
+X.autostart=function(i){try{if(sessionStorage.xwoff)return}catch(e){}if(X.i>-1)return;X.i=i;A.src=TRACKS[i].file;X.ui();
+var ev=['touchend','click','keydown'];function g(e){if(e.target.closest&&e.target.closest('#sotd,#xwbar'))return;ev.forEach(function(n){document.removeEventListener(n,g,true)});if(A.paused&&X.i===i)A.play().catch(function(){});}
+A.play().catch(function(){ev.forEach(function(n){document.addEventListener(n,g,true)})});};
 A.onplay=A.onpause=X.ui;A.onended=function(){X.play((X.i+1)%TRACKS.length)};
 A.addEventListener('play',function(){document.querySelectorAll('video,audio').forEach(function(m){m.pause()})});
 document.addEventListener('play',function(e){document.querySelectorAll('video,audio').forEach(function(m){if(m!==e.target)m.pause();});if(e.target!==A)A.pause();},true);
@@ -84,7 +89,7 @@ document.getElementById('soon').hidden=true;document.getElementById('player').hi
 var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 '}[t.album]||'')+t.album;g.appendChild(h);}var c=document.createElement('div');c.className='card track';c.dataset.i=i;c.innerHTML='<h3>▶ '+t.title+'</h3>';
 c.onclick=function(){XW.play(i)};g.appendChild(c);});XW.ui();})();}
 if(document.getElementById('sotd')){(function(){var day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5),m=new Date().getMonth(),xm=TRACKS.filter(function(t){return t.album==='Xmas Hits'}),pool=(m===11&&new Date().getDate()<=26)||m===10?xm:TRACKS,pick=pool[day%pool.length],pi=TRACKS.indexOf(pick),sb=document.getElementById('sotd');
-sb.dataset.i=pi;sb.hidden=false;sb.onclick=function(){if(XW.i===pi)XW.toggle();else XW.play(pi);};XW.ui();})();}
+sb.dataset.i=pi;sb.hidden=false;sb.onclick=function(){if(XW.i===pi)XW.toggle();else XW.play(pi);};XW.ui();XW.autostart(pi);})();}
 var Q=function(x){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x)};
 var STREETS=[
 ["Bond Street","London",[["Louis Vuitton","https://www.louisvuitton.com"],["Chanel","https://www.chanel.com"],["Dior","https://www.dior.com"],["Cartier","https://www.cartier.com"],["Tiffany & Co.","https://www.tiffany.co.uk"],["Hermès","https://www.hermes.com"],["Gucci","https://www.gucci.com"],["Prada","https://www.prada.com"],["Burberry","https://www.burberry.com"],["Sotheby's","https://www.sothebys.com"]]],
