@@ -53,7 +53,11 @@ footer small{display:block;margin-top:14px;opacity:.7}
 .card .links a{text-decoration:none}
 #player{max-width:520px;margin:0 auto 24px;background:#14324a;border:1px solid #2a5a7a;border-radius:14px;padding:18px;text-align:center}
 #player audio{width:100%;margin-top:10px}
-.track{cursor:pointer}
+.track{cursor:pointer;padding:10px 14px}
+.track h3{font-size:1rem;margin:0}
+.album{grid-column:1/-1;color:#ffd166;font-size:1.4rem;margin-top:12px;text-align:center}
+#tracks{gap:8px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));max-height:70vh;overflow-y:auto;padding-right:4px}
+#player{position:sticky;top:56px;z-index:4}
 .track.on{border-color:#ffd166}
 .soon{text-align:center;opacity:.85}
 .share{display:block;margin:0 auto;cursor:pointer;border:0}
@@ -87,8 +91,8 @@ footer small{display:block;margin-top:14px;opacity:.7}
 </nav>
 
 <section id="music">
-<h2>🎶 Xmasworld Christmas Music</h2>
-<p style="text-align:center;margin-bottom:20px">Original Christmas tracks, exclusive to Xmasworld. Press play and get festive.</p>
+<h2>🎶 Xmasworld Music</h2>
+<p style="text-align:center;margin-bottom:20px">Three albums of original tracks, exclusive to Xmasworld. Tap a song to play.</p>
 <div id="player" hidden><div id="now">Pick a track</div><audio id="audio" controls preload="none"></audio></div>
 <div class="grid" id="tracks"></div>
 <p class="soon" id="soon">🎁 New original tracks dropping in the run-up to Christmas. Check back soon!</p>
@@ -144,12 +148,50 @@ document.getElementById('cd-m').textContent=pad(Math.floor(d/6e4)%60);
 document.getElementById('cd-s').textContent=pad(Math.floor(d/1e3)%60);
 document.getElementById('cdlabel').textContent=label;}
 tick();setInterval(tick,1000);
-// To add songs: upload MP3s to the music/ folder, then list them here, e.g. {title:"Snowy Nights",file:"music/snowy-nights.mp3"}
-var TRACKS=[];
+// Songs are hosted in the xmasworld-music bucket; edit titles here
+var M='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/music/';
+var TRACKS=[
+{album:"Xmas Hits",title:"80s Christmas Chart-Topper",file:M+'001.mp3'},
+{album:"Xmas Hits",title:"Christmas Dance Around the World",file:M+'002.mp3'},
+{album:"Xmas Hits",title:"Unforgettable Christmas",file:M+'004.mp3'},
+{album:"Xmas Hits",title:"Bollywood Afro-House Christmas",file:M+'008.mp3'},
+{album:"Xmas Hits",title:"Christmas (Dance Mix)",file:M+'010.mp3'},
+{album:"Xmas Hits",title:"UK Jungle Christmas Anthem",file:M+'011.mp3'},
+{album:"Xmas Hits",title:"80s Charity Christmas Anthem",file:M+'015.mp3'},
+{album:"Xmas Hits",title:"Christmas Pop Anthem",file:M+'019.mp3'},
+{album:"Xmas Hits",title:"Bollywood Christmas Dance",file:M+'021.mp3'},
+{album:"Xmas Hits",title:"Christmas (Club Mix)",file:M+'022.mp3'},
+{album:"Xmas Hits",title:"Bollywood Christmas Pop",file:M+'023.mp3'},
+{album:"Xmas Hits",title:"Magical Christmas Pop",file:M+'026.mp3'},
+{album:"Xmas Hits",title:"Bollywood House Christmas",file:M+'027.mp3'},
+{album:"Xmas Hits",title:"Gujarati Garba Christmas",file:M+'028.mp3'},
+{album:"Xmas Hits",title:"Euphoric Christmas Dance Anthem",file:M+'029.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Afro-Latin House",file:M+'003.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Melodic Afro-House",file:M+'007.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Smooth Afro-Latin Nights",file:M+'013.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Ibiza Midnight Trance",file:M+'014.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Afro-Arabic Latin House",file:M+'018.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights I",file:M+'020.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Latin Tech House",file:M+'025.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights II",file:M+'031.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Ibiza Sunset",file:M+'032.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights III",file:M+'034.mp3'},
+{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights IV",file:M+'037.mp3'},
+{album:"Non-Xmas Hits",title:"International Dance Anthem",file:M+'005.mp3'},
+{album:"Non-Xmas Hits",title:"Feel-Good Reggae-Pop",file:M+'006.mp3'},
+{album:"Non-Xmas Hits",title:"Bhangra Latin Fusion",file:M+'016.mp3'},
+{album:"Non-Xmas Hits",title:"Poker Night Country",file:M+'017.mp3'},
+{album:"Non-Xmas Hits",title:"Bollywood Love Song",file:M+'024.mp3'},
+{album:"Non-Xmas Hits",title:"90s Ragga Jungle",file:M+'030.mp3'},
+{album:"Non-Xmas Hits",title:"Stadium Rock Anthem",file:M+'033.mp3'},
+{album:"Non-Xmas Hits",title:"Romantic Dance-Pop",file:M+'035.mp3'},
+{album:"Non-Xmas Hits",title:"60s Bollywood Ballad",file:M+'036.mp3'}
+];
 (function(){var g=document.getElementById('tracks'),a=document.getElementById('audio'),now=document.getElementById('now');
 if(!TRACKS.length)return;document.getElementById('soon').hidden=true;document.getElementById('player').hidden=false;
-TRACKS.forEach(function(t,i){var c=document.createElement('div');c.className='card track';c.innerHTML='<h3>▶ '+t.title+'</h3><p>Xmasworld original</p>';
-c.onclick=function(){document.querySelectorAll('.track').forEach(function(e){e.classList.remove('on')});c.classList.add('on');a.src=t.file;now.textContent='Now playing: '+t.title;a.play();};g.appendChild(c);});})();
+var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 '}[t.album]||'')+t.album;g.appendChild(h);}var c=document.createElement('div');c.className='card track';c.innerHTML='<h3>▶ '+t.title+'</h3>';
+c.onclick=function(){document.querySelectorAll('.track').forEach(function(e){e.classList.remove('on')});c.classList.add('on');a.src=t.file;now.textContent='Now playing: '+t.title;a.play();};g.appendChild(c);});
+a.onended=function(){var cs=document.querySelectorAll('.track'),i=[].indexOf.call(cs,document.querySelector('.track.on'));if(i>-1&&i<cs.length-1)cs[i+1].click();};})();
 document.getElementById('share').onclick=function(){var d={title:'Xmasworld',text:'🎄 Christmas & New Year around the world',url:'https://xmas-world.com/'};
 if(navigator.share){navigator.share(d).catch(function(){})}else{window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url),'_blank')}};
 for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=(0.15+Math.random()*0.45).toFixed(2);document.body.appendChild(s);}
