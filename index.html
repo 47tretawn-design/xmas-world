@@ -61,6 +61,12 @@ footer small{display:block;margin-top:14px;opacity:.7}
 .track.on{border-color:#ffd166}
 .soon{text-align:center;opacity:.85}
 .share{display:block;margin:0 auto;cursor:pointer;border:0}
+.clip{padding:0;overflow:hidden}
+.clip video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+.clip.wide{grid-column:1/-1}
+.clip.wide video{aspect-ratio:16/9}
+.clip h3{padding:10px 14px;margin:0;font-size:1rem}
+#clips{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;align-items:start}
 .snow{position:fixed;top:-10px;z-index:1;color:#fff;pointer-events:none;animation:fall linear infinite}
 @media(prefers-reduced-motion:reduce){.snow{display:none}}
 @keyframes fall{to{transform:translateY(110vh)}}
@@ -85,6 +91,7 @@ footer small{display:block;margin-top:14px;opacity:.7}
 </header>
 <nav>
 <a href="#music">Music</a>
+<a href="#comedy">Comedy</a>
 <a href="#world">Around the World</a>
 <a href="#highstreet">Virtual High Street</a>
 <a href="#calendar">Calendar</a>
@@ -96,6 +103,12 @@ footer small{display:block;margin-top:14px;opacity:.7}
 <div id="player" hidden><div id="now">Pick a track</div><audio id="audio" controls preload="none"></audio></div>
 <div class="grid" id="tracks"></div>
 <p class="soon" id="soon">🎁 New original tracks dropping in the run-up to Christmas. Check back soon!</p>
+</section>
+
+<section id="comedy">
+<h2>😂 Di Twits</h2>
+<p style="text-align:center;margin-bottom:20px">Our 3D animated British comedy. Tap to watch.</p>
+<div class="grid" id="clips"></div>
 </section>
 
 <section id="world">
@@ -192,6 +205,11 @@ if(!TRACKS.length)return;document.getElementById('soon').hidden=true;document.ge
 var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 '}[t.album]||'')+t.album;g.appendChild(h);}var c=document.createElement('div');c.className='card track';c.innerHTML='<h3>▶ '+t.title+'</h3>';
 c.onclick=function(){document.querySelectorAll('.track').forEach(function(e){e.classList.remove('on')});c.classList.add('on');a.src=t.file;now.textContent='Now playing: '+t.title;a.play();};g.appendChild(c);});
 a.onended=function(){var cs=document.querySelectorAll('.track'),i=[].indexOf.call(cs,document.querySelector('.track.on'));if(i>-1&&i<cs.length-1)cs[i+1].click();};})();
+var V='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/comedy/';
+var CLIPS=[["v03","Di Twits: the intro",1],["v04","The Receipt"],["v05","Market Day"],["v07","£10 Trainers"],["v08","Nan's Gold Watch"],["v02","The Look"],["v06","What's in the Bag?",1],["v01","Live at the Pub",1]];
+(function(){var g=document.getElementById('clips');CLIPS.forEach(function(c){var d=document.createElement('div');d.className='card clip'+(c[2]?' wide':'');
+d.innerHTML='<video controls playsinline preload="none" poster="'+V+c[0]+'.jpg" src="'+V+c[0]+'.mp4"></video><h3>'+c[1]+'</h3>';g.appendChild(d);});
+document.addEventListener('play',function(e){document.querySelectorAll('video,audio').forEach(function(m){if(m!==e.target)m.pause();});},true);})();
 document.getElementById('share').onclick=function(){var d={title:'Xmasworld',text:'🎄 Christmas & New Year around the world',url:'https://xmas-world.com/'};
 if(navigator.share){navigator.share(d).catch(function(){})}else{window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url),'_blank')}};
 for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=(0.15+Math.random()*0.45).toFixed(2);document.body.appendChild(s);}
