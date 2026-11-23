@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xmasworld – Christmas & New Year Around the World</title>
+<meta name="description" content="Christmas music, celebrations around the world, a virtual high street and a calendar of festive events.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#0b1d2e;color:#fdf8ef;line-height:1.6}
+a{color:#ffd166}
+header{text-align:center;padding:80px 20px 60px;background:radial-gradient(circle at top,#1e4d3a,#0b1d2e)}
+header h1{font-size:3.2rem;color:#ffd166;letter-spacing:2px}
+header p{font-size:1.2rem;margin-top:10px}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:14px;background:#a4161a;position:sticky;top:0;z-index:5}
+nav a{color:#fff;text-decoration:none;font-weight:bold}
+#countdown{font-size:1.6rem;margin-top:24px;color:#fff}
+section{max-width:1000px;margin:0 auto;padding:60px 20px}
+h2{font-size:2rem;color:#ffd166;margin-bottom:20px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#14324a;border-radius:12px;padding:20px;border:1px solid #2a5a7a}
+.card h3{color:#fff;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;background:#14324a;border-radius:12px;overflow:hidden}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #2a5a7a}
+th{background:#a4161a}
+footer{text-align:center;padding:30px;font-size:.9rem;opacity:.7}
+.snow{position:fixed;top:-10px;color:#fff;pointer-events:none;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh)}}
+</style>
+</head>
+<body>
+<header>
+<h1>🎄 Xmasworld 🎄</h1>
+<p>Christmas &amp; New Year, celebrated around the world</p>
+<div id="countdown"></div>
+</header>
+<nav>
+<a href="#music">Music</a>
+<a href="#world">Around the World</a>
+<a href="#highstreet">Virtual High Street</a>
+<a href="#calendar">Calendar</a>
+</nav>
+
+<section id="music">
+<h2>🎶 Xmasworld Christmas Music</h2>
+<p style="text-align:center;margin-bottom:20px">Original Christmas tracks, exclusive to Xmasworld. Press play and get festive.</p>
+<div class="grid" id="tracks">
+<div class="card"><h3>Track 1</h3><p>Coming soon</p></div>
+<div class="card"><h3>Track 2</h3><p>Coming soon</p></div>
+<div class="card"><h3>Track 3</h3><p>Coming soon</p></div>
+</div>
+</section>
+
+<section id="world">
+<h2>🌍 Christmas Around the World</h2>
+<div class="grid">
+<div class="card"><h3>London</h3><p>Oxford Street lights, Trafalgar Square tree and the New Year fireworks on the Thames.</p></div>
+<div class="card"><h3>New York</h3><p>The Rockefeller Center tree and the Times Square ball drop.</p></div>
+<div class="card"><h3>Germany</h3><p>Traditional Christmas markets with mulled wine and gingerbread.</p></div>
+<div class="card"><h3>Sydney</h3><p>Christmas on the beach and world-famous harbour fireworks.</p></div>
+</div>
+</section>
+
+<section id="highstreet">
+<h2>🛍️ The Virtual High Street</h2>
+<p style="text-align:center;margin-bottom:20px">Stroll the world's most famous shopping streets, dressed for the season.</p>
+<div class="grid">
+<div class="card"><h3>Oxford Street</h3><p>London</p></div>
+<div class="card"><h3>Fifth Avenue</h3><p>New York</p></div>
+<div class="card"><h3>Champs-Élysées</h3><p>Paris</p></div>
+<div class="card"><h3>Ginza</h3><p>Tokyo</p></div>
+</div>
+</section>
+
+<section id="calendar">
+<h2>📅 Festive Calendar of Events</h2>
+<table>
+<tr><th>Date</th><th>Event</th></tr>
+<tr><td>1 Dec</td><td>Advent calendars open</td></tr>
+<tr><td>6 Dec</td><td>St Nicholas Day (Europe)</td></tr>
+<tr><td>13 Dec</td><td>St Lucia Day (Scandinavia)</td></tr>
+<tr><td>24 Dec</td><td>Christmas Eve</td></tr>
+<tr><td>25 Dec</td><td>Christmas Day</td></tr>
+<tr><td>26 Dec</td><td>Boxing Day</td></tr>
+<tr><td>31 Dec</td><td>New Year's Eve – fireworks worldwide</td></tr>
+<tr><td>1 Jan</td><td>New Year's Day</td></tr>
+<tr><td>6 Jan</td><td>Epiphany / Three Kings' Day</td></tr>
+</table>
+</section>
+
+<footer>&copy; Xmasworld · xmas-world.com</footer>
+
+<script>
+function tick(){var now=new Date(),y=now.getFullYear(),x=new Date(y,11,25);if(now>x)x=new Date(y+1,11,25);var d=x-now,days=Math.floor(d/864e5),h=Math.floor(d/36e5)%24,m=Math.floor(d/6e4)%60;document.getElementById('countdown').textContent=days+' days, '+h+' hours, '+m+' minutes until Christmas';}
+tick();setInterval(tick,60000);
+for(var i=0;i<40;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=Math.random();document.body.appendChild(s);}
+</script>
+</body>
+</html>
