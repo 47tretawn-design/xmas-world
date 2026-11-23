@@ -3,36 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e4d3a">
 <title>Xmasworld – Christmas & New Year Around the World</title>
 <meta name="description" content="Christmas music, celebrations around the world, a virtual high street and a calendar of festive events.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Georgia,serif;background:#0b1d2e;color:#fdf8ef;line-height:1.6}
 a{color:#ffd166}
-header{text-align:center;padding:80px 20px 60px;background:radial-gradient(circle at top,#1e4d3a,#0b1d2e)}
-header h1{font-size:3.2rem;color:#ffd166;letter-spacing:2px}
-header p{font-size:1.2rem;margin-top:10px}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:14px;background:#a4161a;position:sticky;top:0;z-index:5}
-nav a{color:#fff;text-decoration:none;font-weight:bold}
-#countdown{font-size:1.6rem;margin-top:24px;color:#fff}
+header{text-align:center;padding:64px 20px 48px;background:radial-gradient(circle at top,#1e4d3a,#0b1d2e)}
+header>*{position:relative;z-index:2}
+.tree{font-size:3rem;line-height:1}
+header h1{font-size:clamp(2.6rem,12vw,4rem);color:#ffd166;letter-spacing:2px;line-height:1.1;margin-top:8px}
+header p{font-size:1.15rem;margin-top:10px;text-shadow:0 1px 4px #000}
+nav{display:flex;justify-content:center;gap:22px;padding:14px 18px;background:#a4161a;position:sticky;top:0;z-index:5;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav::-webkit-scrollbar{display:none}
+nav a{color:#fff;text-decoration:none;font-weight:bold;flex:0 0 auto}
+@media(max-width:560px){nav{justify-content:flex-start}}
+#countdown{display:flex;justify-content:center;gap:10px;margin-top:26px}
+.cd{background:rgba(0,0,0,.35);border:1px solid rgba(255,209,102,.35);border-radius:10px;padding:8px 0;width:64px}
+.cd b{display:block;font-size:1.6rem;color:#fff;font-variant-numeric:tabular-nums;line-height:1.1}
+.cd span{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;opacity:.8}
+#cdlabel{margin-top:10px;font-size:1rem;opacity:.9}
+.cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:bold;text-decoration:none;font-family:inherit;font-size:1rem}
+.btn-gold{background:#ffd166;color:#0b1d2e}
+.btn-ghost{border:2px solid #ffd166;color:#ffd166}
 section{max-width:1000px;margin:0 auto;padding:60px 20px}
+section>*{position:relative;z-index:2}
 h2{font-size:2rem;color:#ffd166;margin-bottom:20px;text-align:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#14324a;border-radius:12px;padding:20px;border:1px solid #2a5a7a}
+.card{position:relative;z-index:2;background:#14324a;border-radius:12px;padding:20px;border:1px solid #2a5a7a}
 .card h3{color:#fff;margin-bottom:8px}
-table{width:100%;border-collapse:collapse;background:#14324a;border-radius:12px;overflow:hidden}
+table{position:relative;z-index:2;width:100%;border-collapse:collapse;background:#14324a;border-radius:12px;overflow:hidden}
 th,td{padding:12px;text-align:left;border-bottom:1px solid #2a5a7a}
 th{background:#a4161a}
 footer{text-align:center;padding:30px;font-size:.9rem;opacity:.7}
-.snow{position:fixed;top:-10px;color:#fff;pointer-events:none;animation:fall linear infinite}
+.snow{position:fixed;top:-10px;z-index:1;color:#fff;pointer-events:none;animation:fall linear infinite}
+@media(prefers-reduced-motion:reduce){.snow{display:none}}
 @keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
 <body>
 <header>
-<h1>🎄 Xmasworld 🎄</h1>
+<div class="tree" aria-hidden="true">🎄</div>
+<h1>Xmasworld</h1>
 <p>Christmas &amp; New Year, celebrated around the world</p>
-<div id="countdown"></div>
+<div id="countdown" aria-live="off">
+<div class="cd"><b id="cd-d">0</b><span>days</span></div>
+<div class="cd"><b id="cd-h">0</b><span>hrs</span></div>
+<div class="cd"><b id="cd-m">0</b><span>mins</span></div>
+<div class="cd"><b id="cd-s">0</b><span>secs</span></div>
+</div>
+<p id="cdlabel">until Christmas</p>
+<div class="cta">
+<a class="btn btn-gold" href="#music">▶ Play Christmas Music</a>
+<a class="btn btn-ghost" href="#highstreet">Explore the High Street</a>
+</div>
 </header>
 <nav>
 <a href="#music">Music</a>
@@ -91,9 +117,17 @@ footer{text-align:center;padding:30px;font-size:.9rem;opacity:.7}
 <footer>&copy; Xmasworld · xmas-world.com</footer>
 
 <script>
-function tick(){var now=new Date(),y=now.getFullYear(),x=new Date(y,11,25);if(now>x)x=new Date(y+1,11,25);var d=x-now,days=Math.floor(d/864e5),h=Math.floor(d/36e5)%24,m=Math.floor(d/6e4)%60;document.getElementById('countdown').textContent=days+' days, '+h+' hours, '+m+' minutes until Christmas';}
-tick();setInterval(tick,60000);
-for(var i=0;i<40;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=Math.random();document.body.appendChild(s);}
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){var now=new Date(),y=now.getFullYear(),xmas=new Date(y,11,25),label='until Christmas',x;
+if(now<xmas){x=xmas}else{x=new Date(y+1,0,1);label='until New Year'}
+var d=Math.max(0,x-now);
+document.getElementById('cd-d').textContent=Math.floor(d/864e5);
+document.getElementById('cd-h').textContent=pad(Math.floor(d/36e5)%24);
+document.getElementById('cd-m').textContent=pad(Math.floor(d/6e4)%60);
+document.getElementById('cd-s').textContent=pad(Math.floor(d/1e3)%60);
+document.getElementById('cdlabel').textContent=label;}
+tick();setInterval(tick,1000);
+for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=(0.15+Math.random()*0.45).toFixed(2);document.body.appendChild(s);}
 </script>
 </body>
 </html>
