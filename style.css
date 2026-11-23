@@ -6,10 +6,6 @@ header>*{position:relative;z-index:2}
 .tree{font-size:3rem;line-height:1}
 header h1{font-size:clamp(2.6rem,12vw,4rem);color:#ffd166;letter-spacing:2px;line-height:1.1;margin-top:8px}
 header p{font-size:1.15rem;margin-top:10px;text-shadow:0 1px 4px #000}
-nav{display:flex;justify-content:center;gap:22px;padding:14px 18px;background:#a4161a;position:sticky;top:0;z-index:5;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-nav::-webkit-scrollbar{display:none}
-nav a{color:#fff;text-decoration:none;font-weight:bold;flex:0 0 auto}
-@media(max-width:560px){nav{justify-content:flex-start}}
 #countdown{display:flex;justify-content:center;gap:10px;margin-top:26px}
 .cd{flex:0 0 auto;background:rgba(0,0,0,.35);border:1px solid rgba(255,209,102,.35);border-radius:10px;padding:8px 0;width:64px}
 .cd b{display:block;font-size:1.6rem;color:#fff;font-variant-numeric:tabular-nums;line-height:1.1}
@@ -70,7 +66,6 @@ footer small{display:block;margin-top:14px;opacity:.7}
 .subhead>*{position:relative;z-index:2}
 .subhead a.logo{font-size:1.6rem;font-weight:bold;color:#ffd166;text-decoration:none;letter-spacing:1px}
 .subhead p{margin-top:4px;opacity:.85}
-nav a.on{text-decoration:underline;text-underline-offset:6px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .tile{display:block;text-decoration:none;background:#14324a;border:1px solid #2a5a7a;border-radius:14px;padding:18px 14px;text-align:center;color:#fff;font-weight:bold;position:relative;z-index:2}
 .tile span{display:block;font-size:2rem;margin-bottom:6px}
@@ -80,3 +75,20 @@ nav a.on{text-decoration:underline;text-underline-offset:6px}
 #xwbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 #xwbar button{background:none;border:0;color:#ffd166;font-size:1.1rem;cursor:pointer;padding:4px 6px;flex:none}
 body{padding-bottom:70px}
+
+/* Side menu: fixed on the left on big screens, slide-out drawer on phones */
+nav{position:fixed;top:0;left:0;bottom:0;width:220px;z-index:40;background:#a4161a;display:flex;flex-direction:column;padding:18px 0;overflow-y:auto;box-shadow:2px 0 14px rgba(0,0,0,.35)}
+nav a{color:#fff;text-decoration:none;font-weight:bold;padding:12px 22px;border-left:4px solid transparent}
+nav a:hover{background:rgba(0,0,0,.15)}
+nav a.on{background:rgba(0,0,0,.25);border-left-color:#ffd166}
+nav a.navlogo{color:#ffd166;font-size:1.15rem;padding:6px 22px 18px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.2);border-left:0;background:none}
+#menubtn{display:none}
+#navshade{display:none}
+@media(min-width:900px){body{padding-left:220px}#xwbar{left:calc(50% + 110px)}}
+@media(max-width:899px){
+nav{transform:translateX(-100%);transition:transform .25s ease}
+body.menu-open nav{transform:none}
+#menubtn{display:block;position:fixed;top:12px;left:12px;z-index:45;width:46px;height:46px;border-radius:12px;border:1px solid #ffd166;background:rgba(10,30,45,.9);color:#ffd166;font-size:1.5rem;line-height:1;cursor:pointer}
+body.menu-open #menubtn{left:232px}
+body.menu-open #navshade{display:block;position:fixed;inset:0;z-index:39;background:rgba(0,0,0,.5)}
+}

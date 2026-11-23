@@ -149,6 +149,10 @@ for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');
 var R={music:'music.html',comedy:'comedy.html',fireworks:'fireworks.html',world:'world.html',highstreet:'shop.html',luxury:'shop.html#luxury',windows:'shop.html#windows'},h=location.hash.slice(1);
 if((p==='index.html')&&R[h])location.replace(R[h]);})();
 
+if(!document.getElementById('menubtn')){var mb=document.createElement('button');mb.id='menubtn';mb.setAttribute('aria-label','Menu');mb.textContent='☰';document.body.insertBefore(mb,document.body.firstChild);var sh=document.createElement('div');sh.id='navshade';document.body.appendChild(sh);}
 if(!XW.bar.parentNode)document.body.appendChild(XW.bar);XW.ui();
 }
+// Phone menu: ☰ opens the side menu; tapping a link or outside closes it
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;if(t.closest('#menubtn')){document.body.classList.toggle('menu-open');return;}if(t.id==='navshade'||t.closest('nav a'))document.body.classList.remove('menu-open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('menu-open');});
 init();
