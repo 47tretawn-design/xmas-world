@@ -8,89 +8,17 @@
 <meta name="description" content="Live Christmas countdown, original Christmas music, a virtual and luxury high street, famous Christmas windows, and New Year's Eve fireworks to watch live from around the world.">
 <link rel="canonical" href="https://xmas-world.com/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<link rel="stylesheet" href="style.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Xmasworld">
 <meta property="og:url" content="https://xmas-world.com/">
-<meta property="og:title" content="Xmasworld 🎄 Christmas & New Year around the world">
-<meta property="og:description" content="Live countdown, original Christmas music, celebrations worldwide and a virtual high street.">
+<meta property="og:title" content="Xmasworld – Christmas & New Year Around the World">
+<meta property="og:description" content="Live Christmas countdown, original Christmas music, a virtual and luxury high street, famous Christmas windows, and New Year's Eve fireworks to watch live from around the world.">
 <meta property="og:image" content="https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/og/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Xmasworld – Christmas & New Year, celebrated around the world">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/og/og-image.jpg">
-<meta name="twitter:title" content="Xmasworld 🎄 Christmas & New Year around the world">
-<meta name="twitter:description" content="Live countdown, original Christmas music, celebrations worldwide and a virtual high street.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Georgia,serif;background:#0b1d2e;color:#fdf8ef;line-height:1.6}
-a{color:#ffd166}
-header{text-align:center;padding:64px 20px 48px;background:radial-gradient(circle at top,#1e4d3a,#0b1d2e)}
-header>*{position:relative;z-index:2}
-.tree{font-size:3rem;line-height:1}
-header h1{font-size:clamp(2.6rem,12vw,4rem);color:#ffd166;letter-spacing:2px;line-height:1.1;margin-top:8px}
-header p{font-size:1.15rem;margin-top:10px;text-shadow:0 1px 4px #000}
-nav{display:flex;justify-content:center;gap:22px;padding:14px 18px;background:#a4161a;position:sticky;top:0;z-index:5;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-nav::-webkit-scrollbar{display:none}
-nav a{color:#fff;text-decoration:none;font-weight:bold;flex:0 0 auto}
-@media(max-width:560px){nav{justify-content:flex-start}}
-#countdown{display:flex;justify-content:center;gap:10px;margin-top:26px}
-.cd{flex:0 0 auto;background:rgba(0,0,0,.35);border:1px solid rgba(255,209,102,.35);border-radius:10px;padding:8px 0;width:64px}
-.cd b{display:block;font-size:1.6rem;color:#fff;font-variant-numeric:tabular-nums;line-height:1.1}
-.cd span{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;opacity:.8}
-#cdlabel{margin-top:10px;font-size:1rem;opacity:.9}
-.cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
-.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:bold;text-decoration:none;font-family:inherit;font-size:1rem}
-.btn-gold{background:#ffd166;color:#0b1d2e}
-.btn-ghost{border:2px solid #ffd166;color:#ffd166}
-section{max-width:1000px;margin:0 auto;padding:60px 20px}
-section>*{position:relative;z-index:2}
-h2{font-size:2rem;color:#ffd166;margin-bottom:20px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{position:relative;z-index:2;background:#14324a;border-radius:12px;padding:20px;border:1px solid #2a5a7a}
-.card h3{color:#fff;margin-bottom:8px}
-table{position:relative;z-index:2;width:100%;border-collapse:collapse;background:#14324a;border-radius:12px;overflow:hidden}
-th,td{padding:12px;text-align:left;border-bottom:1px solid #2a5a7a}
-th{background:#a4161a}
-footer{text-align:center;padding:30px;font-size:.9rem}
-footer small{display:block;margin-top:14px;opacity:.7}
-.card .links{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;font-weight:bold}
-.card .links a{text-decoration:none}
-#player{max-width:520px;margin:0 auto 24px;background:#14324a;border:1px solid #2a5a7a;border-radius:14px;padding:18px;text-align:center}
-#player audio{width:100%;margin-top:10px}
-.track{cursor:pointer;padding:10px 14px}
-.track h3{font-size:1rem;margin:0}
-.album{grid-column:1/-1;color:#ffd166;font-size:1.4rem;margin-top:12px;text-align:center}
-#tracks{gap:8px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));max-height:70vh;overflow-y:auto;padding-right:4px}
-#player{position:sticky;top:56px;z-index:4}
-.track.on{border-color:#ffd166}
-.soon{text-align:center;opacity:.85}
-.share{display:block;margin:0 auto;cursor:pointer;border:0}
-.clip{padding:0;overflow:hidden}
-.clip video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
-.clip.wide{grid-column:1/-1}
-.clip.wide video{aspect-ratio:16/9}
-.clip h3{padding:10px 14px;margin:0;font-size:1rem}
-#clips{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;align-items:start}
-#streets,#lstreets{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;scrollbar-width:none}
-#streets::-webkit-scrollbar,#lstreets::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:2px solid #ffd166;background:transparent;color:#ffd166;border-radius:999px;padding:8px 16px;font:bold .95rem Georgia,serif;cursor:pointer}
-.chip.on{background:#ffd166;color:#0b1d2e}
-.sthead{text-align:center;margin-bottom:14px}
-.sthead h3{font-size:1.6rem;color:#fff}
-.sthead a{font-weight:bold;text-decoration:none;margin:0 8px}
-.shops{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.shop{display:flex;align-items:center;justify-content:space-between;gap:6px;background:#14324a;border:1px solid #2a5a7a;border-radius:10px;padding:12px 14px}
-.shop a{text-decoration:none;font-weight:bold;color:#fff}
-.shop a.pin{font-size:1.1rem}
-.fwt{font-size:1.3rem;color:#ffd166;font-weight:bold}
-.live{display:inline-block;background:#e63946;color:#fff;border-radius:6px;padding:2px 8px;font-size:.8rem;font-weight:bold;margin-left:6px}
-.sotd{display:block;margin:22px auto 0;background:rgba(0,0,0,.35);border:1px solid rgba(255,209,102,.5);border-radius:14px;padding:10px 18px;color:#fdf8ef;font:1rem Georgia,serif;cursor:pointer}
-.sotd b{color:#ffd166}
-.snow{position:fixed;top:-10px;z-index:1;color:#fff;pointer-events:none;animation:fall linear infinite}
-@media(prefers-reduced-motion:reduce){.snow{display:none}}
-@keyframes fall{to{transform:translateY(110vh)}}
-</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Xmasworld","url":"https://xmas-world.com/","description":"Christmas & New Year, celebrated around the world"}</script>
 </head>
 <body>
@@ -106,77 +34,33 @@ footer small{display:block;margin-top:14px;opacity:.7}
 </div>
 <p id="cdlabel">until Christmas</p>
 <div class="cta">
-<a class="btn btn-gold" href="#highstreet">🛍️ Shop the High Street</a>
-<a class="btn btn-ghost" href="#music">▶ Play Christmas Music</a>
+<a class="btn btn-gold" href="shop.html">🛍️ Shop the High Street</a>
+<a class="btn btn-ghost" href="music.html">▶ Play Christmas Music</a>
 </div>
 <button id="sotd" class="sotd" hidden></button>
 </header>
 <nav>
-<a href="#highstreet">Virtual High Street</a>
-<a href="#luxury">Luxury</a>
-<a href="#windows">Windows</a>
-<a href="#fireworks">Fireworks</a>
-<a href="#music">Music</a>
-<a href="#comedy">Comedy</a>
-<a href="#world">Around the World</a>
-<a href="#calendar">Calendar</a>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="shop.html#luxury">Luxury</a>
+<a href="shop.html#windows">Windows</a>
+<a href="fireworks.html">Fireworks</a>
+<a href="music.html">Music</a>
+<a href="comedy.html">Comedy</a>
+<a href="world.html">Around the World</a>
 </nav>
 
-<section id="highstreet">
-<h2>🛍️ The Virtual High Street</h2>
-<p style="text-align:center;margin-bottom:20px">Pick a street, then tap a shop to visit it. 📍 shows it on the map.</p>
-<div id="streets"></div>
-<div id="street"></div>
-</section>
-
-<section id="luxury">
-<h2>💎 The Luxury High Street</h2>
-<p style="text-align:center;margin-bottom:20px">The world's most exclusive shopping streets, in one place. For Christmas and beyond.</p>
-<div id="lstreets"></div>
-<div id="lstreet"></div>
-</section>
-
-<section id="windows">
-<h2>🪟 Famous Christmas Windows</h2>
-<p style="text-align:center;margin-bottom:20px">The world's best-loved department store windows. Watch this year's and past years' displays.</p>
-<div class="grid" id="wins"></div>
-</section>
-
-<section id="fireworks">
-<h2>🎆 New Year's Eve Fireworks: Watch Live</h2>
-<p style="text-align:center;margin-bottom:20px">Follow midnight around the world on 31 December. Times are shown in your own time zone. Tap to watch live.</p>
-<div class="grid" id="fw"></div>
-</section>
-
-<section id="music">
-<h2>🎶 Xmasworld Music</h2>
-<p style="text-align:center;margin-bottom:20px">Three albums of original tracks, exclusive to Xmasworld. Tap a song to play.</p>
-<div id="player" hidden><div id="now">Pick a track</div><audio id="audio" controls preload="none"></audio></div>
-<div class="grid" id="tracks"></div>
-<p class="soon" id="soon">🎁 New original tracks dropping in the run-up to Christmas. Check back soon!</p>
-</section>
-
-<section id="comedy">
-<h2>😂 Di Twits</h2>
-<p style="text-align:center;margin-bottom:20px">Our 3D animated British comedy. Tap to watch.</p>
-<div class="grid" id="clips"></div>
-</section>
-
-<section id="world">
-<h2>🌍 Christmas Around the World</h2>
-<div class="grid">
-<div class="card"><h3>London</h3><p>Oxford Street lights, Trafalgar Square tree and the New Year fireworks on the Thames.</p><div class="links"><a href="https://www.youtube.com/results?search_query=London+Christmas+lights+and+New+Year+fireworks" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>New York</h3><p>The Rockefeller Center tree and the Times Square ball drop.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Rockefeller+Christmas+tree+and+Times+Square+ball+drop" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Germany</h3><p>Traditional Christmas markets with mulled wine and gingerbread.</p><div class="links"><a href="https://www.youtube.com/results?search_query=German+Christmas+markets" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Sydney</h3><p>Christmas on the beach and world-famous harbour fireworks.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Sydney+New+Year+fireworks" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Mexico</h3><p>Las Posadas: nine nights of processions, piñatas and candlelit parties before Christmas Eve.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Las+Posadas+Mexico+Christmas" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Philippines</h3><p>One of the world's longest Christmas seasons, with glowing parol star lanterns and Simbang Gabi dawn masses.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Philippines+Christmas+parol+lanterns" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Japan</h3><p>Winter illuminations across Tokyo and a famous Christmas Eve KFC dinner tradition.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Tokyo+Christmas+illuminations" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Iceland</h3><p>Thirteen mischievous Yule Lads visit children in the days before Christmas.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Iceland+Yule+Lads+Christmas" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Italy</h3><p>La Befana, the kindly witch, brings sweets to children on 6 January.</p><div class="links"><a href="https://www.youtube.com/results?search_query=La+Befana+Italy+Epiphany" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Spain</h3><p>The El Gordo Christmas lottery and Three Kings parades on 5 January.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Cabalgata+de+Reyes+Spain+parade" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Sweden</h3><p>St Lucia Day on 13 December, with candlelit processions and saffron buns.</p><div class="links"><a href="https://www.youtube.com/results?search_query=St+Lucia+Day+Sweden+procession" target="_blank" rel="noopener">▶ Watch</a></div></div>
-<div class="card"><h3>Ethiopia</h3><p>Genna, Orthodox Christmas, celebrated on 7 January with church services and feasting.</p><div class="links"><a href="https://www.youtube.com/results?search_query=Ethiopia+Genna+Christmas" target="_blank" rel="noopener">▶ Watch</a></div></div>
+<section id="explore">
+<h2>✨ Explore Xmasworld</h2>
+<div class="tiles">
+<a class="tile" href="shop.html"><span>🛍️</span>Virtual High Street<small>Shop the world's famous streets</small></a>
+<a class="tile" href="shop.html#luxury"><span>💎</span>Luxury High Street<small>Knightsbridge to Dubai</small></a>
+<a class="tile" href="shop.html#windows"><span>🪟</span>Christmas Windows<small>Selfridges, Harrods, Macy's</small></a>
+<a class="tile" href="fireworks.html"><span>🎆</span>NYE Fireworks Live<small>Midnight around the world</small></a>
+<a class="tile" href="music.html"><span>🎶</span>Xmasworld Music<small>Three original albums</small></a>
+<a class="tile" href="comedy.html"><span>😂</span>Di Twits<small>Our animated comedy</small></a>
+<a class="tile" href="world.html"><span>🌍</span>Around the World<small>How 12 countries celebrate</small></a>
+<a class="tile" href="#calendar"><span>📅</span>Festive Calendar<small>Advent to Epiphany</small></a>
 </div>
 </section>
 
@@ -190,126 +74,13 @@ footer small{display:block;margin-top:14px;opacity:.7}
 <tr><td>24 Dec</td><td>Christmas Eve</td></tr>
 <tr><td>25 Dec</td><td>Christmas Day</td></tr>
 <tr><td>26 Dec</td><td>Boxing Day</td></tr>
-<tr><td>31 Dec</td><td>New Year's Eve – <a href="#fireworks">watch the fireworks live</a></td></tr>
+<tr><td>31 Dec</td><td>New Year's Eve – <a href="fireworks.html">watch the fireworks live</a></td></tr>
 <tr><td>1 Jan</td><td>New Year's Day</td></tr>
 <tr><td>6 Jan</td><td>Epiphany / Three Kings' Day</td></tr>
 </table>
 </section>
 
 <footer><button class="btn btn-gold share" id="share">🎄 Share Xmasworld</button><small>&copy; Xmasworld · xmas-world.com</small></footer>
-
-<script>
-function pad(n){return n<10?'0'+n:''+n}
-function tick(){var now=new Date(),y=now.getFullYear(),xmas=new Date(y,11,25),label='until Christmas',x;
-if(now<xmas){x=xmas}else{x=new Date(y+1,0,1);label='until New Year'}
-var d=Math.max(0,x-now);
-document.getElementById('cd-d').textContent=Math.floor(d/864e5);
-document.getElementById('cd-h').textContent=pad(Math.floor(d/36e5)%24);
-document.getElementById('cd-m').textContent=pad(Math.floor(d/6e4)%60);
-document.getElementById('cd-s').textContent=pad(Math.floor(d/1e3)%60);
-document.getElementById('cdlabel').textContent=label;}
-tick();setInterval(tick,1000);
-// Songs are hosted in the xmasworld-music bucket; edit titles here
-var M='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/music/';
-var TRACKS=[
-{album:"Xmas Hits",title:"80s Christmas Chart-Topper",file:M+'001.mp3'},
-{album:"Xmas Hits",title:"Christmas Dance Around the World",file:M+'002.mp3'},
-{album:"Xmas Hits",title:"Unforgettable Christmas",file:M+'004.mp3'},
-{album:"Xmas Hits",title:"Bollywood Afro-House Christmas",file:M+'008.mp3'},
-{album:"Xmas Hits",title:"Christmas (Dance Mix)",file:M+'010.mp3'},
-{album:"Xmas Hits",title:"UK Jungle Christmas Anthem",file:M+'011.mp3'},
-{album:"Xmas Hits",title:"80s Charity Christmas Anthem",file:M+'015.mp3'},
-{album:"Xmas Hits",title:"Christmas Pop Anthem",file:M+'019.mp3'},
-{album:"Xmas Hits",title:"Bollywood Christmas Dance",file:M+'021.mp3'},
-{album:"Xmas Hits",title:"Christmas (Club Mix)",file:M+'022.mp3'},
-{album:"Xmas Hits",title:"Bollywood Christmas Pop",file:M+'023.mp3'},
-{album:"Xmas Hits",title:"Magical Christmas Pop",file:M+'026.mp3'},
-{album:"Xmas Hits",title:"Bollywood House Christmas",file:M+'027.mp3'},
-{album:"Xmas Hits",title:"Gujarati Garba Christmas",file:M+'028.mp3'},
-{album:"Xmas Hits",title:"Euphoric Christmas Dance Anthem",file:M+'029.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Afro-Latin House",file:M+'003.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Melodic Afro-House",file:M+'007.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Smooth Afro-Latin Nights",file:M+'013.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Ibiza Midnight Trance",file:M+'014.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Afro-Arabic Latin House",file:M+'018.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights I",file:M+'020.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Latin Tech House",file:M+'025.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights II",file:M+'031.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Ibiza Sunset",file:M+'032.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights III",file:M+'034.mp3'},
-{album:"Ibiza Anthems for Xmas",title:"Latin Afro-House Nights IV",file:M+'037.mp3'},
-{album:"Non-Xmas Hits",title:"International Dance Anthem",file:M+'005.mp3'},
-{album:"Non-Xmas Hits",title:"Feel-Good Reggae-Pop",file:M+'006.mp3'},
-{album:"Non-Xmas Hits",title:"Bhangra Latin Fusion",file:M+'016.mp3'},
-{album:"Non-Xmas Hits",title:"Poker Night Country",file:M+'017.mp3'},
-{album:"Non-Xmas Hits",title:"Bollywood Love Song",file:M+'024.mp3'},
-{album:"Non-Xmas Hits",title:"90s Ragga Jungle",file:M+'030.mp3'},
-{album:"Non-Xmas Hits",title:"Stadium Rock Anthem",file:M+'033.mp3'},
-{album:"Non-Xmas Hits",title:"Romantic Dance-Pop",file:M+'035.mp3'},
-{album:"Non-Xmas Hits",title:"60s Bollywood Ballad",file:M+'036.mp3'}
-];
-(function(){var g=document.getElementById('tracks'),a=document.getElementById('audio'),now=document.getElementById('now');
-if(!TRACKS.length)return;document.getElementById('soon').hidden=true;document.getElementById('player').hidden=false;
-var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 '}[t.album]||'')+t.album;g.appendChild(h);}var c=document.createElement('div');c.className='card track';c.innerHTML='<h3>▶ '+t.title+'</h3>';
-c.onclick=function(){document.querySelectorAll('.track').forEach(function(e){e.classList.remove('on')});c.classList.add('on');a.src=t.file;now.textContent='Now playing: '+t.title;a.play();};g.appendChild(c);});
-var day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5),xm=TRACKS.filter(function(t){return t.album==='Xmas Hits'}),pool=(new Date().getMonth()===11&&new Date().getDate()<=26)||new Date().getMonth()===10?xm:TRACKS,pick=pool[day%pool.length],sb=document.getElementById('sotd');
-sb.innerHTML='🎵 Song of the day: <b>'+pick.title+'</b> ▶';sb.hidden=false;sb.onclick=function(){document.getElementById('music').scrollIntoView({behavior:'smooth'});var cs=document.querySelectorAll('.track');cs[TRACKS.indexOf(pick)].click();};
-a.onended=function(){var cs=document.querySelectorAll('.track'),i=[].indexOf.call(cs,document.querySelector('.track.on'));if(i>-1&&i<cs.length-1)cs[i+1].click();};})();
-var Q=function(x){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x)};
-var STREETS=[
-["Bond Street","London",[["Louis Vuitton","https://www.louisvuitton.com"],["Chanel","https://www.chanel.com"],["Dior","https://www.dior.com"],["Cartier","https://www.cartier.com"],["Tiffany & Co.","https://www.tiffany.co.uk"],["Hermès","https://www.hermes.com"],["Gucci","https://www.gucci.com"],["Prada","https://www.prada.com"],["Burberry","https://www.burberry.com"],["Sotheby's","https://www.sothebys.com"]]],
-["Oxford Street","London",[["Selfridges","https://www.selfridges.com"],["John Lewis","https://www.johnlewis.com"],["Primark","https://www.primark.com"],["Nike","https://www.nike.com"],["Zara","https://www.zara.com"],["H&M","https://www.hm.com"],["Uniqlo","https://www.uniqlo.com"],["HMV","https://hmv.com"],["Boots","https://www.boots.com"]]],
-["Regent Street","London",[["Hamleys","https://www.hamleys.com"],["Liberty","https://www.libertylondon.com"],["Apple","https://www.apple.com/uk/"],["Anthropologie","https://www.anthropologie.com"],["Arket","https://www.arket.com"]]],
-["Fifth Avenue","New York",[["Saks Fifth Avenue","https://www.saksfifthavenue.com"],["Bergdorf Goodman","https://www.bergdorfgoodman.com"],["Tiffany & Co.","https://www.tiffany.com"],["Apple","https://www.apple.com"],["Louis Vuitton","https://us.louisvuitton.com"],["Cartier","https://www.cartier.com"],["Nike","https://www.nike.com"]]],
-["Champs-Élysées","Paris",[["Louis Vuitton","https://www.louisvuitton.com"],["Ladurée","https://www.laduree.com"],["Guerlain","https://www.guerlain.com"],["Sephora","https://www.sephora.fr"],["Apple","https://www.apple.com/fr/"],["Nike","https://www.nike.com"]]],
-["Ginza","Tokyo",[["Ginza Six","https://ginza6.tokyo"],["Mitsukoshi","https://mitsukoshi.mistore.jp"],["Matsuya","https://www.matsuya.com"],["Wako","https://www.wako.co.jp"],["Uniqlo","https://www.uniqlo.com"],["Itoya","https://www.ito-ya.co.jp"],["Apple","https://www.apple.com/jp/"],["Dover Street Market","https://ginza.doverstreetmarket.com"]]]
-];
-function streetPicker(barId,boxId,DATA){var bar=document.getElementById(barId),box=document.getElementById(boxId);
-function show(i){var st=DATA[i];bar.querySelectorAll('.chip').forEach(function(c,j){c.classList.toggle('on',i===j)});
-var h='<div class="sthead"><h3>'+st[0]+'</h3><p>'+st[1]+' · <a href="'+Q(st[0]+', '+st[1])+'" target="_blank" rel="noopener">🗺️ Walk it</a><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(st[0]+' '+st[1]+' Christmas walk')+'" target="_blank" rel="noopener">▶ Watch</a></p></div><div class="shops">';
-st[2].forEach(function(sh){var area=st[0].split(' & ')[0];h+='<div class="shop"><a href="'+(sh[1]||Q(sh[0]+', '+st[1]))+'" target="_blank" rel="noopener">'+sh[0]+'</a><a class="pin" href="'+Q(sh[0]+', '+area+', '+st[1])+'" target="_blank" rel="noopener" aria-label="Map">📍</a></div>'});
-box.innerHTML=h+'</div>';}
-DATA.forEach(function(st,i){var b=document.createElement('button');b.className='chip';b.textContent=st[0];b.onclick=function(){show(i)};bar.appendChild(b)});show(0);}
-streetPicker('streets','street',STREETS);
-var LUXURY=[
-["Knightsbridge","London",[["Harrods","https://www.harrods.com"],["Harvey Nichols","https://www.harveynichols.com"],["Hermès","https://www.hermes.com"],["Chanel","https://www.chanel.com"],["Burberry","https://www.burberry.com"]]],
-["Bond Street","London",[["Louis Vuitton","https://www.louisvuitton.com"],["Cartier","https://www.cartier.com"],["Tiffany & Co.","https://www.tiffany.co.uk"],["Dior","https://www.dior.com"],["Sotheby's","https://www.sothebys.com"]]],
-["Mayfair & Savile Row","London",[["Huntsman","https://www.huntsmansavilerow.com"],["Henry Poole","https://henrypoole.com"],["Burlington Arcade","https://www.burlingtonarcade.com"],["Fortnum & Mason","https://www.fortnumandmason.com"]]],
-["Dubai Mall & Downtown","Dubai",[["The Dubai Mall","https://thedubaimall.com"],["Level Shoes","https://www.levelshoes.com"],["Mall of the Emirates","https://www.malloftheemirates.com"],["Gold Souk",""]]],
-["Avenue Montaigne","Paris",[["Dior","https://www.dior.com"],["Chanel","https://www.chanel.com"],["Louis Vuitton","https://www.louisvuitton.com"]]],
-["Via Montenapoleone","Milan",[["Prada","https://www.prada.com"],["Gucci","https://www.gucci.com"],["Louis Vuitton","https://www.louisvuitton.com"]]],
-["Madison Avenue","New York",[["Ralph Lauren","https://www.ralphlauren.com"],["Hermès","https://www.hermes.com"]]],
-["Rodeo Drive","Beverly Hills",[["Gucci","https://www.gucci.com"],["Chanel","https://www.chanel.com"],["Louis Vuitton","https://www.louisvuitton.com"],["Hermès","https://www.hermes.com"],["Tiffany & Co.","https://www.tiffany.com"]]],
-["Ginza","Tokyo",[["Ginza Six","https://ginza6.tokyo"],["Wako","https://www.wako.co.jp"],["Mitsukoshi","https://mitsukoshi.mistore.jp"]]]
-];
-streetPicker('lstreets','lstreet',LUXURY);
-var WINS=[["Selfridges","London","https://www.selfridges.com"],["Harrods","London","https://www.harrods.com"],["Fortnum & Mason","London","https://www.fortnumandmason.com"],["Liberty","London","https://www.libertylondon.com"],["Macy's Herald Square","New York","https://www.macys.com"],["Saks Fifth Avenue","New York","https://www.saksfifthavenue.com"],["Bergdorf Goodman","New York","https://www.bergdorfgoodman.com"],["Galeries Lafayette Haussmann","Paris","https://haussmann.galerieslafayette.com"],["Printemps Haussmann","Paris","https://www.printemps.com"],["KaDeWe","Berlin","https://www.kadewe.de"]];
-(function(){var g=document.getElementById('wins');WINS.forEach(function(w){var d=document.createElement('div');d.className='card';
-d.innerHTML='<h3>'+w[0]+'</h3><p>'+w[1]+'</p><div class="links"><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(w[0]+' Christmas windows')+'" target="_blank" rel="noopener">▶ Watch</a><a href="'+Q(w[0]+', '+w[1])+'" target="_blank" rel="noopener">📍 Map</a><a href="'+w[2]+'" target="_blank" rel="noopener">🌐 Visit</a></div>';g.appendChild(d);});})();
-var YT=function(q){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q)};
-var FW=[["Auckland","Sky Tower",13,[["▶ Watch live",YT("Auckland Sky Tower New Year fireworks live")]]],
-["Sydney","Harbour Bridge & Opera House",11,[["▶ Official stream","https://sydneynewyearseve.com/live-stream"],["📺 ABC iview","https://iview.abc.net.au"]]],
-["Hong Kong","Victoria Harbour",8,[["▶ Watch live",YT("Hong Kong New Year fireworks Victoria Harbour live")]]],
-["Dubai","Burj Khalifa",4,[["▶ Emaar live stream",YT("Burj Khalifa New Year fireworks live Emaar")]]],
-["Paris","Champs-Élysées & Arc de Triomphe",1,[["▶ Watch live",YT("Paris New Year Champs Elysees fireworks live")]]],
-["Berlin","Brandenburg Gate",1,[["▶ Watch live",YT("Berlin Brandenburg Gate New Year fireworks live")]]],
-["London","London Eye & Big Ben",0,[["📺 BBC iPlayer","https://www.bbc.co.uk/iplayer"],["ℹ️ Event info","https://www.london.gov.uk/events/london-new-years-eve-2026"]]],
-["Rio de Janeiro","Copacabana Beach",-3,[["▶ Watch live",YT("Copacabana New Year fireworks live")]]],
-["New York","Times Square Ball Drop",-5,[["▶ Official webcast","https://www.timessquarenyc.org/webcast"]]]];
-function fwRender(){var now=new Date(),y=(now.getMonth()===0&&now.getDate()<=1)?now.getFullYear():now.getFullYear()+1,g=document.getElementById('fw'),h='';
-FW.forEach(function(c){var t=Date.UTC(y,0,1)-c[2]*36e5,dt=new Date(t),diff=t-now.getTime();
-var when=dt.toLocaleString([],{weekday:'short',hour:'2-digit',minute:'2-digit'});
-var badge=(diff<30*6e4&&diff>-30*6e4)?'<span class="live">🔴 LIVE NOW</span>':'';
-h+='<div class="card"><h3>'+c[0]+badge+'</h3><p>'+c[1]+'</p><p class="fwt">'+when+'</p><div class="links">'+c[3].map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+'</a>'}).join('')+'</div></div>';});g.innerHTML=h;}
-fwRender();setInterval(fwRender,60000);
-var V='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/comedy/';
-var CLIPS=[["v03","Di Twits: the intro",1],["v04","The Receipt"],["v05","Market Day"],["v07","£10 Trainers"],["v08","Nan's Gold Watch"],["v02","The Look"],["v06","What's in the Bag?",1],["v01","Live at the Pub",1]];
-(function(){var g=document.getElementById('clips');CLIPS.forEach(function(c){var d=document.createElement('div');d.className='card clip'+(c[2]?' wide':'');
-d.innerHTML='<video controls playsinline preload="none" poster="'+V+c[0]+'.jpg" src="'+V+c[0]+'.mp4"></video><h3>'+c[1]+'</h3>';g.appendChild(d);});
-document.addEventListener('play',function(e){document.querySelectorAll('video,audio').forEach(function(m){if(m!==e.target)m.pause();});},true);})();
-document.getElementById('share').onclick=function(){var d={title:'Xmasworld',text:'🎄 Christmas & New Year around the world',url:'https://xmas-world.com/'};
-if(navigator.share){navigator.share(d).catch(function(){})}else{window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url),'_blank')}};
-for(var i=0,n=innerWidth<600?22:40;i<n;i++){var s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';s.style.fontSize=(8+Math.random()*14)+'px';s.style.opacity=(0.15+Math.random()*0.45).toFixed(2);document.body.appendChild(s);}
-</script>
+<script src="app.js"></script>
 </body>
 </html>
