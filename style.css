@@ -94,3 +94,5 @@ body.menu-open #navshade{display:block;position:fixed;inset:0;z-index:39;backgro
 }
 
 .buy{grid-column:1/-1;justify-self:center;margin-bottom:8px}
+
+.socials{margin:0 auto 22px}.socials span{display:block;font-size:.85rem;opacity:.8;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase}.socials div{display:flex;justify-content:center;gap:18px}.socials a{display:inline-flex;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;background:rgba(255,255,255,.1);color:#f5c85a;transition:transform .15s,background .15s}.socials a:hover{transform:scale(1.1);background:rgba(255,255,255,.2)}.socials svg{width:22px;height:22px}
