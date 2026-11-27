@@ -1,5 +1,5 @@
-// Songs are hosted in the xmasworld-music bucket; edit titles here
-var M='https://amp-acc-f3a9e2da18fe-xmasworld-music-d558b1c9.cdn.ample.computer/music/';
+// The site plays 45-second PREVIEWS only. Full tracks are delivered on the paid download pages.
+var M='https://amp-acc-f3a9e2da18fe-xmas-world-social-f7043d43.cdn.ample.computer/previews/';
 var TRACKS=[
 {album:"Xmas Hits",title:"80s Christmas Chart-Topper",file:M+'001.mp3'},
 {album:"Xmas Hits",title:"Christmas Dance Around the World",file:M+'002.mp3'},
@@ -16,11 +16,11 @@ var TRACKS=[
 {album:"Xmas Hits",title:"Bollywood House Christmas",file:M+'027.mp3'},
 {album:"Xmas Hits",title:"Gujarati Garba Christmas",file:M+'028.mp3'},
 {album:"Xmas Hits",title:"Euphoric Christmas Dance Anthem",file:M+'029.mp3'},
-{album:"Xmas Hits",title:"Christmas 2026 Party",file:'music/038.mp3'},
-{album:"Xmas Hits",title:"Christmas Around the World",file:'music/039.mp3'},
-{album:"Xmas Hits",title:"Christmas Bells Carol",file:'music/040.mp3'},
-{album:"Xmas Hits",title:"Christmas Glow",file:'music/041.mp3'},
-{album:"Xmas Hits",title:"Christmas Glow (Alt Mix)",file:'music/042.mp3'},
+{album:"Xmas Hits",title:"Christmas 2026 Party",file:M+'038.mp3'},
+{album:"Xmas Hits",title:"Christmas Around the World",file:M+'039.mp3'},
+{album:"Xmas Hits",title:"Christmas Bells Carol",file:M+'040.mp3'},
+{album:"Xmas Hits",title:"Christmas Glow",file:M+'041.mp3'},
+{album:"Xmas Hits",title:"Christmas Glow (Alt Mix)",file:M+'042.mp3'},
 {album:"Ibiza Anthems for Xmas",title:"Afro-Latin House",file:M+'003.mp3'},
 {album:"Ibiza Anthems for Xmas",title:"Melodic Afro-House",file:M+'007.mp3'},
 {album:"Ibiza Anthems for Xmas",title:"Smooth Afro-Latin Nights",file:M+'013.mp3'},
@@ -51,7 +51,7 @@ bar.innerHTML='<button id="xwpp" aria-label="Play or pause">⏸</button><span id
 X.bar=bar;
 X.play=function(i){if(i<0||i>=TRACKS.length)return;X.i=i;A.src=TRACKS[i].file;A.play().catch(function(){});X.ui();};
 X.toggle=function(){if(A.paused)A.play().catch(function(){});else A.pause();};
-X.ui=function(){var t=TRACKS[X.i],on=X.i>-1;bar.hidden=!on;if(on){bar.querySelector('#xwt').textContent='🎵 '+t.title;bar.querySelector('#xwpp').textContent=A.paused?'▶':'⏸';}
+X.ui=function(){var t=TRACKS[X.i],on=X.i>-1;bar.hidden=!on;if(on){bar.querySelector('#xwt').textContent='🎵 '+t.title+' (preview)';bar.querySelector('#xwpp').textContent=A.paused?'▶':'⏸';}
 document.querySelectorAll('.track').forEach(function(c){c.classList.toggle('on',+c.dataset.i===X.i)});
 var now=document.getElementById('now');if(now)now.textContent=on?(A.paused?'Paused: ':'Now playing: ')+t.title:'Pick a track';
 var sb=document.getElementById('sotd');if(sb){var p=TRACKS[+sb.dataset.i];if(p)sb.innerHTML='🎵 Song of the day: <b>'+p.title+'</b> '+(X.i===+sb.dataset.i&&!A.paused?'⏸':'▶');}};
