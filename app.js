@@ -40,7 +40,14 @@ var TRACKS=[
 {album:"Non-Xmas Hits",title:"90s Ragga Jungle",file:M+'030.mp3'},
 {album:"Non-Xmas Hits",title:"Stadium Rock Anthem",file:M+'033.mp3'},
 {album:"Non-Xmas Hits",title:"Romantic Dance-Pop",file:M+'035.mp3'},
-{album:"Non-Xmas Hits",title:"60s Bollywood Ballad",file:M+'036.mp3'}
+{album:"Non-Xmas Hits",title:"60s Bollywood Ballad",file:M+'036.mp3'},
+{album:"Party Around the World",title:"Island Drums Riddim",file:M+'043.mp3'},
+{album:"Party Around the World",title:"Jamaica Bassline",file:M+'044.mp3'},
+{album:"Party Around the World",title:"World Drums Party",file:M+'045.mp3'},
+{album:"Party Around the World",title:"Global Beat",file:M+'046.mp3'},
+{album:"Party Around the World",title:"Fiesta Latina",file:M+'047.mp3'},
+{album:"Party Around the World",title:"Ibiza Sunrise",file:M+'048.mp3'},
+{album:"Party Around the World",title:"Ibiza Nights",file:M+'049.mp3'}
 ];
 
 // Site-wide music player: one audio element that lives outside the page content,
@@ -92,7 +99,7 @@ tick();window.__cdT=setInterval(tick,1000);})();}
 if(document.getElementById('tracks')){(function(){var g=document.getElementById('tracks'),a=document.getElementById('audio');
 document.getElementById('soon').hidden=true;document.getElementById('player').hidden=false;if(a)a.remove();
 var BUY={'Xmas Hits':['https://buy.stripe.com/14A4gz5Zw6Gg1mu6oJbMQ04','£2.99'],'Ibiza Anthems for Xmas':['https://buy.stripe.com/3cI6oHcnUfcM1muaEZbMQ02','£2.99'],'Non-Xmas Hits':['https://buy.stripe.com/dRm9AT5Zw9Ss7KSbJ3bMQ01','£2.00']};
-var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 '}[t.album]||'')+t.album;g.appendChild(h);var b=BUY[t.album];if(b){var k=document.createElement('a');k.className='btn btn-gold buy';k.href=b[0];k.target='_blank';k.rel='noopener';k.textContent='💳 Buy album – '+b[1];g.appendChild(k);}}var c=document.createElement('div');c.className='card track';c.dataset.i=i;c.innerHTML='<h3>▶ '+t.title+'</h3>';
+var last='';TRACKS.forEach(function(t,i){if(t.album!==last){last=t.album;var h=document.createElement('h3');h.className='album';h.textContent=({'Xmas Hits':'🎄 ','Ibiza Anthems for Xmas':'🌴 ','Non-Xmas Hits':'🎉 ','Party Around the World':'🌍 NEW: '}[t.album]||'')+t.album;g.appendChild(h);var b=BUY[t.album];if(b){var k=document.createElement('a');k.className='btn btn-gold buy';k.href=b[0];k.target='_blank';k.rel='noopener';k.textContent='💳 Buy album – '+b[1];g.appendChild(k);}}var c=document.createElement('div');c.className='card track';c.dataset.i=i;c.innerHTML='<h3>▶ '+t.title+'</h3>';
 c.onclick=function(){XW.play(i)};g.appendChild(c);});XW.ui();})();}
 if(document.getElementById('sotd')){(function(){var day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5),m=new Date().getMonth(),xm=TRACKS.filter(function(t){return t.album==='Xmas Hits'}),pool=(m===11&&new Date().getDate()<=26)||m===10?xm:TRACKS,pick=pool[day%pool.length],pi=TRACKS.indexOf(pick),sb=document.getElementById('sotd');
 sb.dataset.i=pi;sb.hidden=false;sb.onclick=function(){if(XW.i===pi)XW.toggle();else XW.play(pi);};XW.ui();XW.autostart(pi);})();}
