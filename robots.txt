@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dl-
+
+Sitemap: https://www.xmas-world.com/sitemap.xml
